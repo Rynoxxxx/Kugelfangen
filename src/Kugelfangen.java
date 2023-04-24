@@ -5,8 +5,8 @@ public class Kugelfangen {
     private GLHimmel himmel;
     private GLTastatur tastatur;
 
-    private Box dieBox;
-    private Kugel kugel1, kugel2, kugel3;
+    private Hai derHai;
+    private Fösche füsch;
 
     public Kugelfangen() {
         kamera = new GLKamera();

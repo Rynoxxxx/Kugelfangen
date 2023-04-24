@@ -1,14 +1,14 @@
 import GLOOP.*;
-public class Kugel{
+public class Fösche{
     private GLKugel kugel;
-    private Box dieBox;
+    private Hai derHai;
     private Spielfeld feld;
     
     private double radius;
     private boolean istAktiv;
     private double vX, vZ;
 
-    public Kugel(){
+    public Fösche(){
 
     }
 
