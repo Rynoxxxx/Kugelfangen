@@ -8,7 +8,7 @@ public class Box{
     public Box(double pbreite , double ptiefe) {
         breite = pbreite;
         tiefe = ptiefe;
-        box= new GLZylinder(0,10,0,breite,tiefe);
+        box= new GLZylinder(0,5,0,breite,tiefe);
         box.drehe(90,0,0);
     }
     //Steuerung-------------------------------------------------

@@ -12,13 +12,30 @@ public class Kugel{
 
     public Kugel(Box pBox, double pRadius){
         radius = pRadius;
-        do {
-             xPos = Math.random()*1000-500;
-        }while(Math.abs(xPos)<490);
-        do {
-            zPos = Math.random()*1000-500;
-        }while(Math.abs(zPos)<490);
+            xPos = Math.random()*980-490;
+            zPos = Math.random()*980-490;
+
+            if (Math.random()>0.5){
+                if (Math.random()>0.5){
+                    xPos=-490;
+                }
+                else{
+                    xPos = 490;
+                }
+            }
+            else{
+                if (Math.random()>0.5){
+                    zPos=-490;
+                }
+                else{
+                    zPos = 490;
+                }
+            }
         kugel = new GLKugel(xPos, radius, zPos, radius);
+
+    }
+    public void bewege(){
+
     }
 
 

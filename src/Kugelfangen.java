@@ -8,7 +8,7 @@ Kugelfangen {
 
     private Box dieBox;
     private Spielfeld spielfeld;
-    private Kugel dieKugel;
+    private Kugel[] dieKugel;
 
     public Kugelfangen() {
         kamera = new GLEntwicklerkamera();
@@ -20,7 +20,10 @@ Kugelfangen {
 
         spielfeld = new Spielfeld(1000, 1000);
         dieBox = new Box(40, 5);
-        dieKugel = new Kugel(dieBox,10);
+        dieKugel = new Kugel[50];
+        for( int i=0; i < dieKugel.length; i++){
+            dieKugel[i] = new Kugel(dieBox, 10);
+        }
         fuehreAus();
 
     }
