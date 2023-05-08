@@ -1,5 +1,6 @@
 import GLOOP.*;
-public class Kugelfangen {
+public class
+Kugelfangen {
     private GLKamera kamera;
     private GLLicht licht;
     private GLHimmel himmel;
@@ -35,16 +36,16 @@ public class Kugelfangen {
 
 
     public void Steureung(){
-        if ((tastatur.istGedrueckt('a'))&&(dieBox.gibXBox()>-500)) {
+        if ((tastatur.istGedrueckt('a'))&&(dieBox.gibXBox()>-460)) {
             dieBox.bewegeLinks();
         }
-        if ((tastatur.istGedrueckt('d'))&&(dieBox.gibXBox()<500)) {
+        if ((tastatur.istGedrueckt('d'))&&(dieBox.gibXBox()<460)) {
             dieBox.bewegeRechts();
         }
-        if ((tastatur.istGedrueckt('w'))&&(dieBox.gibZBox()>-500)) {
+        if ((tastatur.istGedrueckt('w'))&&(dieBox.gibZBox()>-460)) {
             dieBox.bewegeOben();
         }
-        if ((tastatur.istGedrueckt('s'))&&(dieBox.gibZBox()<500)) {
+        if ((tastatur.istGedrueckt('s'))&&(dieBox.gibZBox()<460)) {
             dieBox.bewegeUnten();}
 
     }
