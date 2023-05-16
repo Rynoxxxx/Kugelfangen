@@ -31,7 +31,9 @@ Kugelfangen {
     public void fuehreAus() {
         while (0 == 0) {
             Steureung();
-
+            for( int i=0; i < dieKugel.length; i++) {
+                dieKugel[i].bewege();
+            }
             Sys.warte(1);
         }
 
