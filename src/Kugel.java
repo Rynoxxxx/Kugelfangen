@@ -16,6 +16,7 @@ public class Kugel{
             zPos = Math.random()*980-490;
             xSpeed = Math.random()*2-1;
             zSpeed = Math.random()*2-1;
+            dieBox =pBox;
             if (Math.random()>0.5){
                 if (Math.random()>0.5){
                     xPos=-490;
@@ -37,21 +38,29 @@ public class Kugel{
     }
     public void bewege(){
 
-        if (xPos>=500){
+        if (kugel.gibX()>=500){
             xSpeed = xSpeed*-1;
         }
-        if (xPos<=-500){
+
+        if (kugel.gibX()<=-500){
             xSpeed = xSpeed*-1;
         }
-        if (zPos>=500){
+        if (kugel.gibZ()>=500){
             zSpeed = zSpeed*-1;
         }
-        if (zPos<=-500){
+        if (kugel.gibZ()<=-500){
             zSpeed = zSpeed*-1;
         }
         kugel.verschiebe(xSpeed,0,zSpeed);
     }
-
+    public boolean hit() {
+        double distance = Math.sqrt(Math.pow(kugel.gibX() - dieBox.gibXBox(), 2) + Math.pow(kugel.gibY() - dieBox.gibYBox(), 2) + Math.pow(kugel.gibZ() - dieBox.gibZBox(), 2));
+        if (distance<40) return true;
+        else return false;
+    }
+    public void weg(){
+        kugel.verschiebe(0,10000,0);
+    }
 
 
 

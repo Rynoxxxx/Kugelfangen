@@ -11,7 +11,7 @@ Kugelfangen {
     private Kugel[] dieKugel;
 
     public Kugelfangen() {
-        kamera = new GLEntwicklerkamera();
+        kamera = new GLKamera();
         kamera.setzePosition(0, 500, 800);
 
         licht = new GLLicht();
@@ -33,7 +33,11 @@ Kugelfangen {
             Steureung();
             for( int i=0; i < dieKugel.length; i++) {
                 dieKugel[i].bewege();
+                if(dieKugel[i].hit()){
+                    dieKugel[i].weg();
+                }
             }
+
             Sys.warte(1);
         }
 
