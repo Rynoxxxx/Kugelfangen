@@ -6,12 +6,15 @@ public class Kugel{
     private Spielfeld feld;
     
     private double radius;
+    private int index;
+    private Kugel[] Kugeln;
     private boolean istAktiv;
     private double vX, vZ;
     private double xPos, zPos, xSpeed, zSpeed;
 
-    public Kugel(Box pBox, double pRadius){
+    public Kugel(Box pBox, double pRadius, int pIndex){
         radius = pRadius;
+        index = pIndex;
             xPos = Math.random()*980-490;
             zPos = Math.random()*980-490;
             xSpeed = Math.random()*2-1;
@@ -35,6 +38,9 @@ public class Kugel{
             }
         kugel = new GLKugel(xPos, radius, zPos, radius);
 
+    }
+    public void getArray(Kugel[] pKugel){
+        Kugeln =pKugel;
     }
     public void bewege(){
 
@@ -62,6 +68,16 @@ public class Kugel{
         kugel.verschiebe(0,10000,0);
     }
 
+    public void physics() {
+        for (int i = 0; i > Kugeln.length; i++) {
+            if (!(index == i)) {
+                xSpeed = xSpeed*-1;
+                zSpeed = zSpeed*-1;
+
+            }
+        }
+
+    }
 
 
 }

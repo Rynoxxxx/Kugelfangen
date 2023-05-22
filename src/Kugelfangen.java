@@ -22,27 +22,33 @@ Kugelfangen {
         dieBox = new Box(40, 5);
         dieKugel = new Kugel[50];
         for( int i=0; i < dieKugel.length; i++){
-            dieKugel[i] = new Kugel(dieBox, 10);
+            dieKugel[i] = new Kugel(dieBox, 10, i);
+        }
+        for( int i=0; i < dieKugel.length; i++){
+           dieKugel[i].getArray(dieKugel);
         }
         fuehreAus();
 
     }
-
+    //----------------Start-----------------------
     public void fuehreAus() {
         while (0 == 0) {
             Steureung();
             for( int i=0; i < dieKugel.length; i++) {
+
                 dieKugel[i].bewege();
+                dieKugel[i].physics();
                 if(dieKugel[i].hit()){
                     dieKugel[i].weg();
                 }
             }
 
+
             Sys.warte(1);
         }
 
     }
-
+    //-----------------------------Steuerung------------------------
 
     public void Steureung(){
         if ((tastatur.istGedrueckt('a'))&&(dieBox.gibXBox()>-460)) {
