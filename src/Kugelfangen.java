@@ -5,10 +5,11 @@ Kugelfangen {
     private GLLicht licht;
     private GLHimmel himmel;
     private GLTastatur tastatur;
-
+    private GLTafel counter;
     private Box dieBox;
     private Spielfeld spielfeld;
     private Kugel[] dieKugel;
+    public int points;
 
     public Kugelfangen() {
         kamera = new GLKamera();
@@ -21,6 +22,7 @@ Kugelfangen {
         spielfeld = new Spielfeld(1000, 1000);
         dieBox = new Box(40, 5);
         dieKugel = new Kugel[50];
+        counter = new GLTafel(0,100,-500,200,120);
         for( int i=0; i < dieKugel.length; i++){
             dieKugel[i] = new Kugel(dieBox, 10, i);
         }
@@ -28,7 +30,7 @@ Kugelfangen {
            dieKugel[i].getArray(dieKugel);
             dieKugel[i].kugel.setzeMaterial(GLMaterial.CHROM);
         }
-
+        points=1;
         fuehreAus();
 
     }
@@ -42,9 +44,12 @@ Kugelfangen {
                 dieKugel[i].physics();
                 dieKugel[i].ausFeld();
                 if(dieKugel[i].hit()){
-                    dieBox.box.skaliere(1.025,1.025,1);
-                    dieBox.radius= dieBox.radius*1.025;
+                    dieBox.box.skaliere(1.03,1.03,1);
+                    dieBox.radius= dieBox.radius*1.03;
                     dieKugel[i].weg();
+
+                    counter.setzeText("Punkte:"+points,100);
+                    points=points+1;
                 }
             }
 

@@ -42,6 +42,9 @@ public class Kugel{
     public void getArray(Kugel[] pKugel){
         Kugeln =pKugel;
     }
+
+    //----------------bewegung----------------------
+
     public void bewege(){
 
         if (kugel.gibX()>=500){
@@ -59,6 +62,9 @@ public class Kugel{
         }
         kugel.verschiebe(xSpeed,0,zSpeed);
     }
+
+    //-------------------loch und kugel---------------------------
+
     public boolean hit() {
         double distance = Math.sqrt(Math.pow(kugel.gibX() - dieBox.gibXBox(), 2) + Math.pow(kugel.gibY() - dieBox.gibYBox(), 2) + Math.pow(kugel.gibZ() - dieBox.gibZBox(), 2));
         if (distance<dieBox.radius+this.radius) return true;
@@ -67,6 +73,8 @@ public class Kugel{
     public void weg(){
         kugel.verschiebe(0,100000,0);
     }
+
+    //-----------------kugeln treffen kugeln---------------------------
 
     public void physics() {
         for (int i = 0; i < Kugeln.length; i++) {
@@ -105,11 +113,17 @@ public class Kugel{
     public double gibY(){
         return kugel.gibY();
     }
+
+
+    //---------------falls außerhalb------------------------
+
+
     public void ausFeld() {
-        if (kugel.gibX() > 502.5 || kugel.gibX() < -502.5 || kugel.gibZ() > 502.5 || kugel.gibZ() < -502.5 ) {
-        kugel.setzePosition(0,radius,0);
+
+            if (((kugel.gibX() > 502.5 || kugel.gibX() < -502.5 || kugel.gibZ() > 502.5 || kugel.gibZ() < -502.5))&&kugel.gibY()<100) {
+                kugel.setzePosition(0, radius, 0);
+            }
         }
-    }
 
 }
 
