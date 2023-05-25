@@ -1,7 +1,7 @@
 import GLOOP.*;
 import java.lang.*;
 public class Kugel{
-    private GLKugel kugel;
+    public GLKugel kugel;
     private Box dieBox;
     private Spielfeld feld;
     
@@ -10,7 +10,7 @@ public class Kugel{
     private Kugel[] Kugeln;
     private boolean istAktiv;
     private double vX, vZ;
-    private double xPos, zPos, xSpeed, zSpeed;
+    private double xPos, zPos, xSpeed, zSpeed, tempSpeedX, tempSpeedZ;
 
     public Kugel(Box pBox, double pRadius, int pIndex){
         radius = pRadius;
@@ -61,23 +61,55 @@ public class Kugel{
     }
     public boolean hit() {
         double distance = Math.sqrt(Math.pow(kugel.gibX() - dieBox.gibXBox(), 2) + Math.pow(kugel.gibY() - dieBox.gibYBox(), 2) + Math.pow(kugel.gibZ() - dieBox.gibZBox(), 2));
-        if (distance<40) return true;
+        if (distance<dieBox.radius+this.radius) return true;
         else return false;
     }
     public void weg(){
-        kugel.verschiebe(0,10000,0);
+        kugel.verschiebe(0,100000,0);
     }
 
     public void physics() {
-        for (int i = 0; i > Kugeln.length; i++) {
+        for (int i = 0; i < Kugeln.length; i++) {
             if (!(index == i)) {
-                xSpeed = xSpeed*-1;
-                zSpeed = zSpeed*-1;
-
+                double d = Math.sqrt(Math.pow(kugel.gibX()-Kugeln[i].gibX(),2))+Math.sqrt(Math.pow(kugel.gibZ()-Kugeln[i].gibZ(),2))+Math.sqrt(Math.pow(kugel.gibY()-Kugeln[i].gibY(),2));
+                if (d<radius*2){
+                    tempSpeedX = xSpeed;
+                    tempSpeedZ = zSpeed;
+                    this.xSpeed = Kugeln[i].getSpeedX();
+                    this.zSpeed = Kugeln[i].getSpeedZ();
+                    Kugeln[i].setSpeedX(tempSpeedX);
+                    Kugeln[i].setSpeedZ(tempSpeedZ);
+                }
             }
         }
-
+    }
+    public double getSpeedX(){
+        return xSpeed;
+    }
+    public double getSpeedZ(){
+        return zSpeed;
+    }
+    public void setSpeedX(double pSpeedX){
+        this.xSpeed = pSpeedX;
+    }
+    public void setSpeedZ(double pSpeedZ){
+        this.zSpeed = pSpeedZ;
     }
 
+    public double gibX(){
+        return kugel.gibX();
+    }
+    public double gibZ(){
+        return kugel.gibZ();
+    }
+    public double gibY(){
+        return kugel.gibY();
+    }
+    public void ausFeld() {
+        if (kugel.gibX() > 502.5 || kugel.gibX() < -502.5 || kugel.gibZ() > 502.5 || kugel.gibZ() < -502.5 ) {
+        kugel.setzePosition(0,radius,0);
+        }
+    }
 
 }
+

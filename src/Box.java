@@ -1,14 +1,14 @@
 import GLOOP.*;
 public class Box{
-    private GLZylinder box;
+    public GLZylinder box;
     private Spielfeld feld;
     private double vX,vZ;
-    private double breite, tiefe;
+    public double breite, tiefe, radius;
 
-    public Box(double pbreite , double ptiefe) {
-        breite = pbreite;
+    public Box(double pradius, double ptiefe) {
+        radius = pradius;
         tiefe = ptiefe;
-        box= new GLZylinder(0,5,0,breite,tiefe);
+        box= new GLZylinder(0,5,0,radius,tiefe);
         box.drehe(90,0,0);
     }
     //Steuerung-------------------------------------------------

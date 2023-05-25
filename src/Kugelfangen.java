@@ -26,7 +26,9 @@ Kugelfangen {
         }
         for( int i=0; i < dieKugel.length; i++){
            dieKugel[i].getArray(dieKugel);
+            dieKugel[i].kugel.setzeMaterial(GLMaterial.CHROM);
         }
+
         fuehreAus();
 
     }
@@ -38,7 +40,10 @@ Kugelfangen {
 
                 dieKugel[i].bewege();
                 dieKugel[i].physics();
+                dieKugel[i].ausFeld();
                 if(dieKugel[i].hit()){
+                    dieBox.box.skaliere(1.025,1.025,1);
+                    dieBox.radius= dieBox.radius*1.025;
                     dieKugel[i].weg();
                 }
             }
